@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SELNunitExamples", "SELNuni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignments", "Assignments\Assignments.csproj", "{CD708E0D-7B1A-42E3-9B34-3B68FE350B4E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopesy", "Shopesy\Shopesy.csproj", "{B40409D0-26D8-4021-A029-E70862ABB22D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{CD708E0D-7B1A-42E3-9B34-3B68FE350B4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD708E0D-7B1A-42E3-9B34-3B68FE350B4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD708E0D-7B1A-42E3-9B34-3B68FE350B4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B40409D0-26D8-4021-A029-E70862ABB22D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B40409D0-26D8-4021-A029-E70862ABB22D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B40409D0-26D8-4021-A029-E70862ABB22D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B40409D0-26D8-4021-A029-E70862ABB22D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
