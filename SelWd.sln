@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SELNunitExamples", "SELNuni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignments", "Assignments\Assignments.csproj", "{CD708E0D-7B1A-42E3-9B34-3B68FE350B4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopesy", "Shopesy\Shopesy.csproj", "{B40409D0-26D8-4021-A029-E70862ABB22D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssignmentTest", "Shopesy\AssignmentTest.csproj", "{B40409D0-26D8-4021-A029-E70862ABB22D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

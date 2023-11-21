@@ -120,6 +120,14 @@ namespace SELNunitExamples
 
             emailInput.SendKeys(email);
             passwordInput.SendKeys(pwd);
+            TakeScreenshot();
+
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript("arguments[0].scrollIntoView(true);", driver.FindElement(By.XPath("//button[@type='submit']")));
+            Thread.Sleep(5000);
+            js.ExecuteScript("arguments[0].click();", driver.FindElement(By.XPath("//button[@type='submit']")));
+            Thread.Sleep(5000);
+
             ClearForm(emailInput);
             ClearForm(passwordInput);
             Thread.Sleep(TimeSpan.FromSeconds(2));
@@ -131,6 +139,15 @@ namespace SELNunitExamples
                 new object[] {"ggf@gmail.com","6576"},
                 new object[] {"tru@gmail.com", "76876"}
             };
+        }
+        public void TakeScreenshot()
+        {
+            ITakesScreenshot iss = (ITakesScreenshot)driver;
+            Screenshot ss = iss.GetScreenshot();
+
+            string currdir = Directory.GetParent(@"../../../").FullName;
+            string filepath = currdir + "/Screenshots/ss_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".png";
+            ss.SaveAsFile(filepath);
         }
         void ClearForm(IWebElement element)
         {
