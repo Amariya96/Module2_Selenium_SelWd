@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace AssignmentTest.PageObjects
+
 {
     internal class NaptolHomePage
     {
