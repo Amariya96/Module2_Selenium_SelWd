@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignments", "Assignments\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssignmentTest", "Shopesy\AssignmentTest.csproj", "{B40409D0-26D8-4021-A029-E70862ABB22D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rediff", "Rediff\Rediff.csproj", "{06ABB357-634C-4C47-B248-764FECD80E05}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{B40409D0-26D8-4021-A029-E70862ABB22D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B40409D0-26D8-4021-A029-E70862ABB22D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B40409D0-26D8-4021-A029-E70862ABB22D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06ABB357-634C-4C47-B248-764FECD80E05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06ABB357-634C-4C47-B248-764FECD80E05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06ABB357-634C-4C47-B248-764FECD80E05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06ABB357-634C-4C47-B248-764FECD80E05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

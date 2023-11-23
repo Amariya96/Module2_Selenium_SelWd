@@ -40,7 +40,6 @@ namespace AssignmentTest
             IWebElement selectProduct = fluentwait.Until(driver => driver.FindElement(By.Id("productItem5")));
             selectProduct.Click();
             List<string> listWindow = driver.WindowHandles.ToList();
-            // string lastWindowHandle = "";
             foreach (var handle in listWindow)
             {
                 driver.SwitchTo().Window(handle);
@@ -64,10 +63,6 @@ namespace AssignmentTest
             string url = "https://www.naaptol.com/eyewear/reading-glasses-with-led-lights-lrg4/p/12612074.html";
             IWebElement item = driver.FindElement(By.XPath("//a[contains(text(),'LRG4)')]"));
             Assert.AreEqual(url, item.GetAttribute("href"));
-
-
-          
-
         }
     }
 }
