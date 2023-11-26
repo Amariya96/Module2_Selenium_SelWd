@@ -24,13 +24,23 @@ namespace SELNunitExamples
         [Order(20)]
         public void GSTest()
         {
+            string? currDir = Directory.GetParent(@"../../../")?.FullName;
+            string? excelFilePath = currDir + "\\InputData.xlsx";
+            Console.WriteLine(excelFilePath);
+            List<ExcelData> excelDataList = ExcelUtils.ReadExcelData(excelFilePath);
+            foreach ( var excelData in excelDataList)
+            {
+                Console.WriteLine($"Text : {excelData.SearchText}");
+           
             IWebElement searchInputTextbox = driver.FindElement(By.Id("APjFqb"));
-            searchInputTextbox.SendKeys("Hp Laptop");
+            searchInputTextbox.SendKeys(excelData.SearchText);
             Thread.Sleep(5000);
-            IWebElement gsbutton = driver.FindElement(By.Name("btnK"));
+            IWebElement gsbutton = driver.FindElement(By.Name("gNO89b"));
             gsbutton.Click();
-            Assert.AreEqual("Hp Laptop - Google Search", driver.Title);
+            Assert.That(driver.Title, Is.EqualTo(excelData.SearchText + " - Google Search"));
             Console.WriteLine("GS Test- pass");
+         //       driver.Navigate().GoToUrl("")
+        }
         }
         [Ignore("other")]
         [Test]

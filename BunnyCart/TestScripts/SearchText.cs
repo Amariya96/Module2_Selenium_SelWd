@@ -10,12 +10,12 @@ namespace BunnyCart.TestScripts
     internal class SearchText : CoreCodes
     {
         [Test]
-        [TestCase("Water")]
+        [TestCase("Water Poppy")]
         public void SearchProductAndAddToCart(string searchText)
         {
             BunnyCartHP bhcp1 = new(driver);
             var searchResPage = bhcp1?.TypeSearchInput(searchText);
-            Assert.That(searchText.Contains(searchResPage?.GetFirstProductLink()));
+            Assert.That(searchText, Does.Contain(searchResPage?.GetFirstProductLink()));
             var productPage = searchResPage?.ClickFirstProductLink();
             Assert.That(searchText.Equals(productPage?.GetProductTitleLabel()));
             productPage?.ClickInQtyLink();
