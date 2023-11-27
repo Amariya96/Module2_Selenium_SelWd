@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using SeleniumExtras.PageObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +15,10 @@ namespace CaseStudy.PageObjects
         {
             this.driver = driver ?? throw new ArgumentException(nameof(driver));//if the driver is null exception thrown
             PageFactory.InitElements(driver, this);
+        }
+
+        public  NaptolHomePage(IWebDriver? driver1)
+        {
         }
 
         //Arrange

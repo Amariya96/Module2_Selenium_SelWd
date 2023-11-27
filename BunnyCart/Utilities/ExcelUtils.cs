@@ -10,7 +10,7 @@ namespace BunnyCart.Utilities
 {
     internal class ExcelUtils
     {
-        public static List<SignUp> ReadExcelData(string excelFilePath)
+        public static List<SignUp> ReadExcelData(string excelFilePath, string? sheetName)
         {
             List<SignUp> excelDataList = new List<SignUp>();
             Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
@@ -45,6 +45,11 @@ namespace BunnyCart.Utilities
                 }
             }
             return excelDataList;
+        }
+        static string GetValueOrDefault(DataRow row, string columnName)
+        {
+            Console.WriteLine(row + "  " + columnName);
+            return row.Table.Columns.Contains(columnName) ? row[columnName]?.ToString() : null;
         }
     }
 }

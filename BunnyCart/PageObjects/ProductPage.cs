@@ -10,33 +10,45 @@ namespace BunnyCart.PageObjects
 {
     internal class ProductPage
     {
-        IWebDriver? driver;
-        public ProductPage(IWebDriver driver)
+        IWebDriver driver;
+
+        public ProductPage(IWebDriver? driver)
         {
-            this.driver = driver;
+            this.driver = driver ?? throw new ArgumentException(nameof(driver));
+
+
             PageFactory.InitElements(driver, this);
+
         }
+
         [FindsBy(How = How.XPath, Using = "//h1[@class='page-title']")]
-        private IWebElement? ProductTitleLabel { get; }
+        private IWebElement? ProductTitleLabel { get; set; }
 
         [FindsBy(How = How.ClassName, Using = "qty-inc")]
-        [CacheLookup]
+
         private IWebElement? IncQtyLink { get; set; }
 
+
         [FindsBy(How = How.Id, Using = "product-addtocart-button")]
-        [CacheLookup]
-        private IWebElement? AddToCartBtn { get; set; }
-        public string? GetProductTitleLabel()
+        private IWebElement? AddToCartButton { get; set; }
+
+        public string? GetProductUrl()
+
         {
-            return ProductTitleLabel?.Text;
+
+            string url = driver.Url;
+            return url;
         }
-        public void ClickInQtyLink()
+
+
+        public void GetIncQtyLink()
         {
-             IncQtyLink?.Click();
+            IncQtyLink?.Click();
         }
-        public void ClickAddToCartBtn()
+
+        public void ClickAddToCartButton()
         {
-            AddToCartBtn?.Click();
+            AddToCartButton?.Click();
         }
     }
 }

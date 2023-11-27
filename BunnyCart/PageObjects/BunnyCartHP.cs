@@ -11,83 +11,98 @@ namespace BunnyCart.PageObjects
 {
     internal class BunnyCartHP
     {
-        IWebDriver? driver;
+        IWebDriver driver;
+
         public BunnyCartHP(IWebDriver? driver)
         {
             this.driver = driver ?? throw new ArgumentException(nameof(driver));
-            PageFactory.InitElements(driver, this);
+
+
+            PageFactory.InitElements(driver, this);// to optimize the code page factory is initialized iniside the constructor
+
         }
 
-
-        //Arrange
         [FindsBy(How = How.Id, Using = "search")]
-        [CacheLookup]
+        [CacheLookup]//store the element inside cache memory
         private IWebElement? SearchInput { get; set; }
+
 
         [FindsBy(How = How.XPath, Using = "//a[text()='Create an Account']")]
         [CacheLookup]
-        private IWebElement? CreateAnAcct { get; set; }
+        private IWebElement? CreateAnAccountLink { get; set; }
 
         [FindsBy(How = How.Id, Using = "firstname")]
-        [CacheLookup]
-        private IWebElement? FirstName { get; set; }
+        private IWebElement? FirstNameInput { get; set; }
 
         [FindsBy(How = How.Id, Using = "lastname")]
-        [CacheLookup]
-        private IWebElement? LastName { get; set; }
+        private IWebElement? lasttNameInput { get; set; }
 
         [FindsBy(How = How.Name, Using = "email")]
-        [CacheLookup]
-        private IWebElement? Email { get; set; }
+        private IWebElement? EmailInput { get; set; }
 
         [FindsBy(How = How.Id, Using = "password")]
-        [CacheLookup]
-        private IWebElement? Password { get; set; }
+        private IWebElement? PasswordInput { get; set; }
 
-        [FindsBy(How = How.Name, Using = "password_confirmation")]
-        [CacheLookup]
-        private IWebElement? PasswordConfirmation { get; set; }
+
+
+        [FindsBy(How = How.Id, Using = "password-confirmation")]
+        private IWebElement? ConfirmationPasswordInput { get; set; }
+
 
         [FindsBy(How = How.Id, Using = "mobilenumber")]
-        [CacheLookup]
-        private IWebElement? MobileNumber { get; set; }
+        private IWebElement? MobileNumberInput { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//button[@title='Create an Account']")]
-        [CacheLookup]
-        private IWebElement? SignInBtn { get; set; }
+
+        private IWebElement? SignUpButton { get; set; }
+
 
         //Act
-        public void ClickCreateAccountClick()
+        public void ClickCreateAccountLink()
         {
-            CreateAnAcct?.Click();
+            CreateAnAccountLink?.Click();
         }
-        public void SignUp(string firstName, string lastName, string email, string pwd, string conpwd, string mbno)
+
+        public void SignUp(string firstName, string lastName, string email, string password,
+            string confirmPassword, string mobilenumber)
         {
-            IWebElement modal = new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//div[@class='modal-inner-wrap'])[position()=2]")));
+            IWebElement modal = new WebDriverWait(driver, TimeSpan.FromSeconds(10))
+                .Until(SeleniumExtras.WaitHelpers.ExpectedConditions
+                .ElementIsVisible(By.XPath("(//div[@class='modal-inner-wrap'])[position()=2]")));
 
-            FirstName?.SendKeys(firstName);
-            LastName?.SendKeys(lastName);
-            Email?.SendKeys(email);
 
-            CoreCodes.ScrollIntoView(driver, Password);
-            Password?.SendKeys(pwd);
-            PasswordConfirmation?.SendKeys(conpwd);
+            FirstNameInput?.SendKeys(firstName);
+            lasttNameInput?.SendKeys(lastName);
+            EmailInput?.SendKeys(email);
 
-            CoreCodes.ScrollIntoView(driver, MobileNumber);
-            // modal.FindElement(By.Id("mobilenumber"))
-            MobileNumber?.SendKeys(mbno);
-            Thread.Sleep(1000);
-            SignInBtn?.Click();
+            CoreCodes.ScrollIntoView(driver, modal.FindElement(By.Id("password")));
+            PasswordInput?.SendKeys(password);
+            ConfirmationPasswordInput?.SendKeys(confirmPassword);
+
+
+            CoreCodes.ScrollIntoView(driver, modal.FindElement(By.Id("mobilenumber")));
+            MobileNumberInput?.SendKeys(mobilenumber);
+            Thread.Sleep(3000);
+            SignUpButton?.Click();
+
+
+
         }
-       
-        public SearchResultsPage TypeSearchInput(string searchText)
+        //static void ScrollIntoView(IWebDriver driver, IWebElement element)
+        //{
+        //    IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+        //    js.ExecuteScript("arguments[0].scrollIntoView(true)", element);
+        //}
+
+
+        public SearchResultsPage TypeSearchInput(string searchtext)
         {
-            if(SearchInput == null)
+            if (SearchInput == null)
             {
                 throw new NoSuchElementException(nameof(SearchInput));
             }
-            SearchInput.SendKeys(searchText);
-            SearchInput.SendKeys(Keys.Enter);
+            SearchInput?.SendKeys(searchtext);
+            SearchInput?.SendKeys(Keys.Enter);
             return new SearchResultsPage(driver);
         }
     }
